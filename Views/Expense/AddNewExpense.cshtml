@@ -1,0 +1,43 @@
+@using myapp.Models
+@model ExpenseModel
+@{
+    ViewData["Title"] = "Add new book";
+}
+<div class="container">
+    <h3 class="display-4">Add new expense</h3>
+    <hr />
+<form method="post" enctype="multipart/form-data" asp-action="AddNewExpense" asp-controller="Expense">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="ExpenseName" class="control-label"></label>
+        <input asp-for="ExpenseName" class="form-control" />
+        <span asp-validation-for="ExpenseName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input type="date" asp-for="Date" class="form-control"/>
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ExpenseType" class="control-label"></label>
+        <select asp-for="ExpenseType" class="form-control" asp-items="Html.GetEnumSelectList<ExpenseType>()"> 
+            <option value="">Please select expense type</option>
+        </select>
+        <span asp-validation-for="ExpenseType" class="text-danger"></span>
+    </div>
+
+     <div class="form-group">
+        <label asp-for="Amount" class="control-label"></label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Add Expense" class="btn btn-primary" />
+    </div>
+</form>
+</div>
+
+
